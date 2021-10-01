@@ -1,7 +1,7 @@
 package streamonce
 
 
-interface BoundedStreamOnce<T> {
+interface BoundedStreamOnce<T>: StreamOnce<T, BoundedStreamOnce<T>> {
 
     fun <B> map(f: (T) -> B): BoundedStreamOnce<B>
 
@@ -11,6 +11,6 @@ interface BoundedStreamOnce<T> {
 
     companion object {
         fun <T> fromList(list: List<T>): BoundedStreamOnce<T> =
-            StreamOnceImpl(list.stream())
+            BoundedStreamOnceImpl(list.stream().map { Try.Value(it) })
     }
 }
