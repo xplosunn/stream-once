@@ -1,3 +1,5 @@
+package streamonce.test.streamonce.test
+
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import streamonce.BoundedStreamOnce
